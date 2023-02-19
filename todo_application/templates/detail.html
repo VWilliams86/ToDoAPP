@@ -1,0 +1,41 @@
+<h2><a href="{% url 'home' %}">Home</a></h2>
+
+<h2>Task Name</h2>
+<hr>
+<form method="POST">
+    {% csrf_token %}
+    {{ task_form }}
+    <input type="submit" name="update" value="Update">
+    <input type="submit" name="delete" value="Delete">
+</form>
+
+<hr>
+<h2>Tag</h2>
+
+
+<form method="POST">
+    {% csrf_token %}
+    {{ tag_form }}
+    <input type="submit" name="tag" value="Tag">
+</form>
+
+<ul>
+    {% for tag in tag_list %}
+        <li>{{ tag.name }}</li>
+    {% endfor %}
+</ul>
+
+<hr>
+<h2>Comments</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ comment_form }}
+    <input type="submit" name="add" value="Add">
+</form>
+
+<ul>
+    {% for comment in comment_list %}
+        <li>{{ comment.body }}</li>
+    {% endfor %}
+</ul>
